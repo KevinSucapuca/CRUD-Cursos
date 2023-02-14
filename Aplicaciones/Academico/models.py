@@ -7,5 +7,10 @@ class Curso(models.Model):
     nombre = models.CharField(max_length=100)
     creditos = models.PositiveBigIntegerField()
     
+    def __str__(self):
+        text = "{0}({1})"
+        return text.format(self.nombre, self.creditos)
+        
+    
 
     
