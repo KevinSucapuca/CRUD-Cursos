@@ -8,6 +8,12 @@ def home(request):
     return render(request, 'GestionCursos.html', {'cursos':cursosListados})
 
 
+def contacto(request):
+    
+
+    return render(request, 'Contacto.html')
+
+
 def registrarCurso(request):
     codigo=request.POST['txtcodigo']
     nombre=request.POST['txtnombre']
