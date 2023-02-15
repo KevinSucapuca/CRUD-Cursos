@@ -2,7 +2,7 @@
     "version":2,
     "builds": [{
 
-        "src": "app/wsgi.py",
+        "src": "CursoAcademico/wsgi.py",
         "use": "@vercel/python",
         "config": {
             "maxLambdaSize": "15mb",
@@ -25,7 +25,7 @@
     },
     {
         "src": "/(.*)",
-        "dest": "app/wsgi.py"
+        "dest": "CursoAcademico/wsgi.py"
         
 }
     ]
