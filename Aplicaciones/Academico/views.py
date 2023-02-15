@@ -18,8 +18,18 @@ def registrarCurso(request):
 
 def edicionCurso(request,codigo):
     curso = Curso.objects.get(codigo=codigo)
-    return render(request, 'EdicionCurso.html', {'curso':curso})
+    return render(request, 'edicionCurso.html', {'curso':curso})
 
+def editarCurso(request):
+    codigo=request.POST['txtcodigo']
+    nombre=request.POST['txtnombre']
+    creditos=request.POST['numcreditos']
+    
+    curso = Curso.objects.get(codigo=codigo)
+    curso.nombre = nombre
+    curso.creditos = creditos
+    curso.save()
+    return redirect('/')
     
 
 def eliminarCurso(request,codigo):
