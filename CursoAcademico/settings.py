@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-#&mja@rn_fr#%6hd#z2$bh-!l#$ej!x32*t@)5czd3_v07=zk_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['.vercel.app','.now.sh']
 
 
 # Application definition
@@ -83,7 +83,7 @@ WSGI_APPLICATION = 'CursoAcademico.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'CursoAcademico.db',
+        'NAME': BASE_DIR/'CursoAcademico.db',
     }
 }
 DATABASES['default']= dj_database_url.config()
@@ -110,7 +110,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-pe'
+LANGUAGE_CODE = 'es-PE'
 
 TIME_ZONE = 'America/Lima'
 
@@ -123,6 +123,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build','static')
 
 # Default primary key field type
