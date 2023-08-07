@@ -46,9 +46,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for c in cursos %}
+                    {% for c in cursosListados %}
                     <tr>
-                        <td>{{forloop.counter}}</td>
+                        <td>{{ cursosListados.start_index|add:forloop.counter0 }}</td>
                         <td>{{c.codigo}}</td>
                         <td>{{c.nombre}}</td>
                         <td>{{c.creditos}}</td>
@@ -58,6 +58,11 @@
 
                     {% endfor %}
                 </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="6">{% include "paginacion.html" %}</td>
+                    </tr>
+                </tfoot>
 
             </table>
         </div>
