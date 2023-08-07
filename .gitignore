@@ -1,6 +1,7 @@
 # Created by https://www.toptal.com/developers/gitignore/api/django,visualstudiocode
 # Edit at https://www.toptal.com/developers/gitignore?templates=django,visualstudiocode
 pasos.txt
+hash.py
 ### Django ###
 *.log
 *.pot
