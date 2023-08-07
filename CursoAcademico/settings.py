@@ -22,13 +22,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-#&mja@rn_fr#%6hd#z2$bh-!l#$ej!x32*t@)5czd3_v07=zk_'
-
+SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['.vercel.app', '.now.sh']
+ALLOWED_HOSTS = ['*']
 
+MESSAGE_STORAGE = "django.contrib.messages.storage.cookie.CookieStorage"
 
 # Application definition
 
@@ -88,6 +88,7 @@ DATABASES = {
 }
 DATABASES['default']= dj_database_url.config()
 AUTHENTICATION_BACKENDS = [    'django.contrib.auth.backends.ModelBackend',]
+PASSWORD_HASHERS = [    'django.contrib.auth.hashers.PBKDF2PasswordHasher',]
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
