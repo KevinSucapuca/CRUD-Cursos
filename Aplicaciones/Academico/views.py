@@ -1,12 +1,23 @@
 from django.shortcuts import render,redirect
 from .models import Curso
 from django.contrib import messages
-# Create your views here.
+from django.core.paginator import Paginator
 
 def home(request):
     cursosListados = Curso.objects.all()
+    paginator = Paginator(cursosListados, 10)
+    pagina = request.GET.get('page') or 1
+    cursosListados = paginator.get_page(pagina)
+    pagina_actual = int(pagina)
+    paginas = range(1, cursosListados.paginator.num_pages + 1)
+
+    context = {
+        'cursosListados':cursosListados,
+        'paginas': paginas,
+        'pagina_actual': pagina_actual,
+    }
     
-    return render(request, 'GestionCursos.html', {'cursos':cursosListados})
+    return render(request, 'GestionCursos.html', context)
 
 
 def contacto(request):
@@ -30,6 +41,8 @@ def registrarCurso(request):
             Curso.objects.create(codigo=codigo, nombre=nombre, creditos=creditos)
             messages.success(request, "Curso Registrado Correctamente")
             return redirect('/')
+        
+    
     return render(request, 'GestionCursos.html', {'curso_existe': curso_existe})
 
 
