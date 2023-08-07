@@ -53,7 +53,7 @@
                         <td>{{c.nombre}}</td>
                         <td>{{c.creditos}}</td>
                         <td><a href="editarCurso/{{c.codigo}}" class="btn btn-info">Editar</a></td>
-                        <td><a href="eliminarCurso/{{c.codigo}}" class="btn btn-danger">Eliminar</a></td>
+                        <td><a href="javascript:void(0);" onclick="confirmarEliminacion('{{ c.codigo }}')" class="btn btn-danger">Eliminar</a></td>
                     </tr>
 
                     {% endfor %}
@@ -63,6 +63,24 @@
         </div>
     </div>
 </div>
-
+<script>
+    function confirmarEliminacion(codigo) {
+        Swal.fire({
+            title: '¿Estás seguro?',
+            text: 'Esta acción no se puede deshacer',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sí, eliminar',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Redirigir a la página de eliminación si se confirma
+                window.location.href = 'eliminarCurso/' + codigo;
+            }
+        });
+    }
+</script>
 
 {% endblock %}
